@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Kerem Music - Şarkı Yönetimi</title>
+
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+<div id="wrapper">
+
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <div class="sidebar-brand-icon rotate-n-15">
+                <i class="fas fa-headphones"></i>
+            </div>
+            <div class="sidebar-brand-text mx-3">Kerem Music</div>
+        </a>
+
+        <hr class="sidebar-divider my-0">
+
+        <li class="nav-item">
+            <a class="nav-link" href="index.html">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Dashboard</span></a>
+        </li>
+
+        <hr class="sidebar-divider">
+
+        <div class="sidebar-heading">
+            MÜZİK YÖNETİMİ
+        </div>
+
+        <li class="nav-item active">
+            <a class="nav-link" href="songs.html">
+                <i class="fas fa-fw fa-music"></i>
+                <span>Şarkılar</span></a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="tables.html">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Kullanıcılar</span></a>
+        </li>
+
+        <hr class="sidebar-divider d-none d-md-block">
+
+        <div class="text-center d-none d-md-inline">
+            <button class="rounded-circle border-0" id="sidebarToggle"></button>
+        </div>
+
+    </ul>
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <div id="content">
+
+            <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                    <i class="fa fa-bars"></i>
+                </button>
+
+                <ul class="navbar-nav ml-auto">
+
+                    <div class="topbar-divider d-none d-sm-block"></div>
+
+                    <li class="nav-item dropdown no-arrow">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Kerem</span>
+                            <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
+                        </a>
+                    </li>
+
+                </ul>
+
+            </nav>
+            <div class="container-fluid">
+
+                <h1 class="h3 mb-2 text-gray-800">Şarkı Yönetimi</h1>
+                <p class="mb-4">Müzik uygulamanızdaki tüm şarkıları buradan görebilir ve yenilerini ekleyebilirsiniz.</p>
+
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h6 class="m-0 font-weight-bold text-primary">Şarkı Listesi</h6>
+                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addSongModal">
+                            <i class="fas fa-plus fa-sm"></i> Yeni Şarkı Ekle
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="songTable" width="100%" cellspacing="0">
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Şarkı Adı</th>
+                                    <th>Sanatçı</th>
+                                    <th>Tür</th>
+                                </tr>
+                                </thead>
+                                <tbody id="songTableBody">
+                                <tr>
+                                    <td colspan="4" class="text-center">Şarkılar yükleniyor...</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="addSongModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Veritabanına Yeni Şarkı Ekle</h5>
+                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="addSongForm">
+                                    <div class="form-group">
+                                        <label for="songTitle">Şarkı Adı</label>
+                                        <input type="text" class="form-control" id="songTitle" required placeholder="Örn: Bleed">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="songArtistId">Sanatçı ID</label>
+                                        <input type="number" class="form-control" id="songArtistId" required value="1" placeholder="Mevcut bir Sanatçı ID girin">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="songUrl">Şarkı Kaynak URL</label>
+                                        <input type="text" class="form-control" id="songUrl" required value="https://storage.keremmusic.com/songs/track.mp3" placeholder="Şarkı dosyasının linki">
+                                    </div>
+                                    <button type="submit" class="btn btn-success btn-block">Veritabanına Kaydet</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <footer class="sticky-footer bg-white">
+            <div class="container my-auto">
+                <div class="copyright text-center my-auto">
+                    <span>Copyright &copy; Kerem Music 2026</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<script src="js/sb-admin-2.min.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const songTableBody = document.getElementById('songTableBody');
+        const addSongForm = document.getElementById('addSongForm');
+
+        // 1. Şarkıları Listeleme Fonksiyonu
+        function loadSongs() {
+            fetch('/api/songs')
+                .then(response => response.json())
+                .then(songs => {
+                    songTableBody.innerHTML = '';
+                    if (songs.length === 0) {
+                        songTableBody.innerHTML = '<tr><td colspan="4" class="text-center">Veritabanında henüz şarkı yok.</td></tr>';
+                        return;
+                    }
+                    songs.forEach(song => {
+                        const row = `
+                                <tr>
+                                    <td>${song.id}</td>
+                                    <td>${song.title}</td>
+                                    <td>${song.artistName || song.artist || 'Bilinmiyor'}</td>
+                                    <td><span class="badge badge-info">${song.genreName || song.genre || 'Belirtilmedi'}</span></td>
+                                </tr>
+                            `;
+                        songTableBody.innerHTML += row;
+                    });
+                })
+                .catch(error => {
+                    console.error('Şarkılar çekilemedi:', error);
+                    songTableBody.innerHTML = '<tr><td colspan="4" class="text-center text-danger">Şarkı listesi yüklenemedi!</td></tr>';
+                });
+        }
+
+        // Sayfa yüklenince şarkıları getir
+        loadSongs();
+
+        // 2. Form Gönderildiğinde Yeni Şarkı Ekleme (POST)
+        addSongForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // SongRequestDto yapısına birebir uygun paketleme
+            const songData = {
+                title: document.getElementById('songTitle').value,
+                artistId: parseInt(document.getElementById('songArtistId').value),
+                albumId: null,
+                genreId: null,
+                durationSeconds: 180, // Varsayılan 3 dakika
+                url: document.getElementById('songUrl').value
+            };
+
+            fetch('/api/songs', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(songData)
+            })
+                .then(response => {
+                    if (response.ok) {
+                        alert('Şarkı başarıyla eklendi!');
+                        $('#addSongModal').modal('hide'); // Modal'ı kapat
+                        addSongForm.reset(); // Formu temizle
+                        loadSongs(); // Tabloyu canlı yenile
+                    } else {
+                        return response.text().then(text => { alert('Hata oluştu: ' + text) });
+                    }
+                })
+                .catch(error => {
+                    console.error('İstek hatası:', error);
+                    alert('Arka plana bağlanırken bir hata oluştu.');
+                });
+        });
+    });
+</script>
+
+</body>
+
+</html>
