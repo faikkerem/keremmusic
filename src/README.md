@@ -19,6 +19,7 @@ Bu proje, Spring Boot ve H2 veritabanı kullanılarak geliştirilmiş bir kullan
 3. `KeremMusicApplication.java` dosyasını çalıştırın.
 4. Tarayıcınızdan `http://127.0.0.1:9092/tables.html` adresine gidin.
 5. Tarayıcınızdan http://127.0.0.1:9092/h2-console/l  adresine gidin.
+6. INSERT INTO USERS (username, email, role, password) VALUES ('kerem', 'kerem@email.com', 'USER', '123456');git add .
 
 ## 📋 Proje Yapısı
 - `src/main/java/com/keremmusic/keremmusic/controller`: API uç noktaları

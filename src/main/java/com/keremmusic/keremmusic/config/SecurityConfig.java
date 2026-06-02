@@ -15,19 +15,17 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-
                 .csrf(csrf -> csrf.disable())
-
-
+                .headers(headers -> headers.frameOptions(frame -> frame.disable()))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/h2-console/**").permitAll() // H2 veritabanına izin ver
+                        .requestMatchers("/h2-console/**").permitAll()
                         .requestMatchers("/", "/index.html", "/songs.html", "/tables.html", "/css/**", "/js/**", "/img/**", "/vendor/**").permitAll()
-                )
-
-                .headers(headers -> headers.frameOptions(frame -> frame.sameOrigin()));
+                        .anyRequest().permitAll()
+                );
 
         return http.build();
     }
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
