@@ -66,12 +66,7 @@
             </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Utilities</span>
-                </a>
+
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
@@ -87,18 +82,12 @@
             <!-- Divider -->
             <hr class="sidebar-divider">
 
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Addons
-            </div>
+
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                    aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Pages</span>
-                </a>
+
+
+
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Login Screens:</h6>
@@ -111,14 +100,6 @@
                         <a class="collapse-item" href="blank.html">Blank Page</a>
                     </div>
                 </div>
-            </li>
-
-            <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link" href="charts.html">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span></a>
-            </li>
 
             <!-- Nav Item - Tables -->
             <li class="nav-item active">
@@ -153,20 +134,28 @@
                             <i class="fa fa-bars"></i>
                         </button>
                     </form>
-
-                    <!-- Topbar Search -->
-                    <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                                aria-label="Search" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </button>
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Favori Müziklerim</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered my-music-table" id="musicTable" width="100%" cellspacing="0">
+                                    <thead>
+                                    <th>Durum</th>
+                                    <tr>
+                                        <th>Sanatçı</th>
+                                        <th>Şarkı</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-                    </form>
+                    </div>
+                    <!-- Topbar Search -->
+
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -196,13 +185,7 @@
                         </li>
 
                         <!-- Nav Item - Alerts -->
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-bell fa-fw"></i>
-                                <!-- Counter - Alerts -->
-                                <span class="badge badge-danger badge-counter">3+</span>
-                            </a>
+
                             <!-- Dropdown - Alerts -->
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="alertsDropdown">
@@ -247,13 +230,7 @@
                         </li>
 
                         <!-- Nav Item - Messages -->
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-envelope fa-fw"></i>
-                                <!-- Counter - Messages -->
-                                <span class="badge badge-danger badge-counter">7</span>
-                            </a>
+
                             <!-- Dropdown - Messages -->
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="messagesDropdown">
@@ -315,13 +292,7 @@
                         <div class="topbar-divider d-none d-sm-block"></div>
 
                         <!-- Nav Item - User Information -->
-                        <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
-                                <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg">
-                            </a>
+
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
@@ -360,18 +331,19 @@
                             href="https://datatables.net">official DataTables documentation</a>.</p>
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Yeni Kullanıcı Ekle</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Yeni Sanatçı Ekle</h6>
                         </div>
+
                         <div class="card-body">
                             <form id="addUserForm" class="row">
                                 <div class="col-md-3">
-                                    <input type="text" id="username" class="form-control" placeholder="Kullanıcı Adı" required>
+                                    <input type="text" id="username" class="form-control" placeholder="Sanatçı" required>
                                 </div>
                                 <div class="col-md-3">
-                                    <input type="email" id="email" class="form-control" placeholder="Email" required>
+                                    <input type="email" id="email" class="form-control" placeholder="E-mail" required>
                                 </div>
                                 <div class="col-md-3">
-                                    <input type="password" id="password" class="form-control" placeholder="Şifre" required>
+                                    <input type="password" id="password" class="form-control" placeholder="Sanatçı Şifresi" required>
                                 </div>
                                 <div class="col-md-3">
                                     <button type="submit" class="btn btn-success btn-block">Kaydet</button>
@@ -379,7 +351,24 @@
                             </form>
                         </div>
                     </div>
-                    <!-- DataTales Example -->
+                    <!-- DataTales Example --><div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Yeni Sanatçı ve Şarkı Ekle</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <input type="text" id="artistInput" class="form-control" placeholder="Sanatçı adı...">
+                                </div>
+                                <div class="col-md-5">
+                                    <input type="text" id="songInput" class="form-control" placeholder="Şarkı adı...">
+                                </div>
+                            <div class="col-md-2">
+                                <button onclick="addMusic()" class="btn btn-primary w-100">Ekle</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
@@ -419,6 +408,7 @@
             </div>
         </div>
     </div>
+
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             fetch('/api/users')
@@ -434,6 +424,12 @@
 
                     users.forEach(user => {
                         const row = `
+<td>
+    <button class="btn ${user.status ? 'btn-success' : 'btn-secondary'} btn-sm"
+            onclick="toggleStatus(${user.id}, ${user.status})">
+
+    </button>
+</td>
                         <tr>
                             <td>${user.id}</td>
                             <td>${user.username}</td>
@@ -494,7 +490,43 @@
             }
         }
     </script>
+    <script>
+        function addMusic() {
+            // 1. Değerleri al
+            let artistInput = document.getElementById("artistInput");
+            let songInput = document.getElementById("songInput");
 
+            // 2. Tablo gövdesini bul (sınıf ismine göre)
+            let tbody = document.querySelector('.my-music-table tbody');
 
+            // 3. Kontrol et
+            if (tbody && artistInput.value !== "" && songInput.value !== "") {
+                let row = tbody.insertRow(); // Satır ekle
+                row.insertCell(0).innerText = artistInput.value; // 1. hücreye yaz
+                row.insertCell(1).innerText = songInput.value;   // 2. hücreye yaz
+
+                // 4. Kutuları temizle
+                artistInput.value = "";
+                songInput.value = "";
+            } else {
+                alert("Tablo bulunamadı veya alanlar boş!");
+            }
+        }
+        function toggleStatus(id, currentStatus) {
+            // Tam tersini yap (Aktifse pasif yap, pasifse aktif)
+            let newStatus = !currentStatus;
+
+            fetch('http://127.0.0.1:9092/api/users/' + id + '/status', {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ status: newStatus })
+            })
+                .then(response => {
+                    if(response.ok) {
+                        location.reload(); // Sayfayı yenile ve yeni durumu göster
+                    }
+                });
+        }
+    </script>
 </body>
 </html>

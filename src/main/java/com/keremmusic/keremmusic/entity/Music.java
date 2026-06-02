@@ -27,5 +27,5 @@ public class Music {
 
     private String album;
 
-    private String duration; // Şarkı süresi (Örn: "3:45")
+    private String duration;
 }

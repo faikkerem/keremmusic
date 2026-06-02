@@ -25,7 +25,7 @@ public class UserController {
         }
     }
 
-    // 2. Kullanıcı Giriş Yapma API Ucu (Endpoint)
+
     @PostMapping("/login")
     public ResponseEntity<?> loginUser(@RequestParam String username, @RequestParam String password) {
         try {
@@ -36,13 +36,13 @@ public class UserController {
         }
     }
 
-    // 3. Kullanıcıları Listeleme
+
     @GetMapping
     public ResponseEntity<?> getAllUsers() {
         return ResponseEntity.ok(userService.getAllUsers());
     }
 
-    // 4. Kullanıcı Silme API Ucu
+
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteUser(@PathVariable Long id) {
         try {

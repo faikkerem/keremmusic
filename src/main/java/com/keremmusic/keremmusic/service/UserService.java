@@ -16,7 +16,7 @@ public class UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
-    // 1. Kullanıcı Kayıt Olma Fonksiyonu
+
     public User registerUser(User user) {
         if (userRepository.findByUsername(user.getUsername()).isPresent()) {
             throw new RuntimeException("Bu kullanıcı adı zaten alınmış!");
@@ -31,7 +31,7 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    // 2. Kullanıcı Giriş Yapma Fonksiyonu
+
     public User loginUser(String username, String password) {
         Optional<User> userOpt = userRepository.findByUsername(username);
         if (userOpt.isEmpty()) {
@@ -43,14 +43,14 @@ public class UserService {
         }
         return user;
     }
-    // Kullanıcıyı ID'sine göre sil
+
     public void deleteUser(Long id) {
         if (!userRepository.existsById(id)) {
             throw new RuntimeException("Kullanıcı bulunamadı!");
         }
         userRepository.deleteById(id);
     }
-    // 3. Kullanıcıları Listeleme Fonksiyonu
+
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }

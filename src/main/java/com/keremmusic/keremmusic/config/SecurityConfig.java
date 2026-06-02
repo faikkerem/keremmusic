@@ -15,22 +15,21 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-                // Şimdilik geliştirme aşamasında tarayıcıdan gelen POST/PUT isteklerinin engellenmemesi için CSRF'i kapatıyoruz
+
                 .csrf(csrf -> csrf.disable())
 
-                // Sayfa izinlerini ayarla
+
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/h2-console/**").permitAll() // H2 veritabanına izin ver
-                        .requestMatchers("/", "/index.html", "/songs.html", "/tables.html", "/css/**", "/js/**", "/img/**", "/vendor/**").permitAll() // Frontend dosyalarına izin ver
-                        .anyRequest().permitAll() // Şimdilik geliştirme aşamasında diğer her şeye de izin ver
+                        .requestMatchers("/", "/index.html", "/songs.html", "/tables.html", "/css/**", "/js/**", "/img/**", "/vendor/**").permitAll()
                 )
-                // H2 Console'un tarayıcıda (iframe içinde) kilitlenmesini engelle
+
                 .headers(headers -> headers.frameOptions(frame -> frame.sameOrigin()));
 
         return http.build();
     }
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder(); // Şifreleme hatasını çözer
+        return new BCryptPasswordEncoder();
     }
 }

@@ -27,7 +27,7 @@ public class User {
     @Column(unique = true, nullable = false)
     private String username;
 
-    // E-posta alanını buraya ekliyoruz
+
     @NotBlank(message = "E-posta boş olamaz")
     @Email(message = "Geçerli bir e-posta adresi giriniz")
     @Column(unique = true, nullable = false)

@@ -56,7 +56,7 @@ public class SongController {
     }
 
     @DeleteMapping("/{id}")
-   // @PreAuthorize("hasRole('ADMIN')")
+
     public ResponseEntity<?> deleteSong(@PathVariable Long id) {
         songService.deleteSong(id);
         return ResponseEntity.ok("Şarkı silindi. ID: " + id);
